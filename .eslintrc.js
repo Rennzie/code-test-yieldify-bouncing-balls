@@ -26,7 +26,6 @@ module.exports = {
     'react',
     'react-hooks',
     'prettier',
-    'jsx-a11y',
     'import',
     'material-ui',
     'cypress'

@@ -1,0 +1,7 @@
+.ball-wrapper {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  background-color: brown;
+  border-radius: 50%;
+}
