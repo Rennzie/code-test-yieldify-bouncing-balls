@@ -1,10 +1,26 @@
 import React from 'react';
 import './Ball.css';
 
-type Props = {
-  idx: number;
+export type BallStarter = {
+  id: string;
+  startCoords: { x: number; y: number };
 };
 
-export default function Ball({ idx }: Props) {
-  return <div className="ball-wrapper" data-testid={`ball-${idx}`} />;
+type Props = {
+  idx: number;
+  ballStart: BallStarter;
+};
+
+export default function Ball({ idx, ballStart }: Props) {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: ballStart.startCoords.y - 15,
+        left: ballStart.startCoords.x - 15
+      }}
+      className="ball-wrapper"
+      data-testid={`ball-${idx}`}
+    />
+  );
 }

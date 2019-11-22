@@ -1,4 +1,5 @@
 .container-wrapper {
+  overflow: hidden;
   height: 75vh;
   width: 75vw;
   border: 2px solid black;

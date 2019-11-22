@@ -35,10 +35,11 @@ This section is a rough outline of the thought process I followed to acomplish t
 1.  Set-up project with tooling which helps minimise small bugs. Eslint etc
 2.  Build a contained which adds a ball on click
 3.  Make sure multiple balls can be added
-4.  Get the balls to drop after they appear in the container
+4.  Set the start position of the ball based on click
+5.  Get the balls to drop after they appear in the container
     - Create a gravity function?
-5.  Remove the ball from the container when it reaches the bottom
-6.  Get this working for all balls added
+6.  Remove the ball from the container when it reaches the bottom
+7.  Get this working for all balls added
 
 ### Components and hooks
 
