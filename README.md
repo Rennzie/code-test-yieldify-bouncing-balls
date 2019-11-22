@@ -56,12 +56,13 @@ This section is a rough outline of the thought process I followed to acomplish t
 |  --- __tests__
 |
 |  --- components
-|    |   --- Container.tsx
+|    |   --- App.tsx
 |    |   --- Ball.tsx
+|    |   --- Container.tsx
 |
 |  --- hooks
 |    |   --- useMovement.ts
-
+|  --- index.tsx
 ```
 
 ## Third party attribution
