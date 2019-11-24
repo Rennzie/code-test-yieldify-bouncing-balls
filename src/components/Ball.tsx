@@ -11,21 +11,18 @@ export type Position = {
 export type BallSetup = {
   id: string;
   containerBottom: number;
+  containerTop: number;
   startCoords: Position;
+  radius: number;
 };
 
 type Props = {
   ballSetup: BallSetup;
-  containerBottom: number;
   idx: number;
   handleRemoveBall: (id: string) => void;
 };
 
-export default function Ball({ containerBottom, idx, ballSetup }: Props) {
-  console.log(containerBottom);
-  // const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
-  // const [intervalId, setIntervalId] = useState();
-
+export default function Ball({ idx, ballSetup }: Props) {
   const { position } = useMovement(ballSetup);
 
   // if (position.y >= containerBottom) {
@@ -33,22 +30,12 @@ export default function Ball({ containerBottom, idx, ballSetup }: Props) {
   //   handleRemoveBall(ballSetup.id);
   // }
 
-  // // setstate triggers another run of the effect,
-  // // BUG: more balls added the faster the earlier ones go
-  // // need to move this logic out of the effect
-  // useEffect(() => {
-  //   const moveBallDown = () => {
-  //     setPosition(pos => ({ ...pos, y: pos.y + 1 }));
-  //   };
-  //   setTimeout(() => moveBallDown(), 100);
-  // });
-
   return (
     <div
       style={{
         position: 'absolute',
-        top: position.y - 15,
-        left: position.x - 15
+        top: position.y,
+        left: position.x
       }}
       className="ball-wrapper"
       data-testid={`ball-${idx}`}

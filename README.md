@@ -39,8 +39,12 @@ This section is a rough outline of the thought process I followed to acomplish t
 - [x] Get the balls to drop after they appear in the container
       (Create a gravity function?)
 - [x] Remove the ball from the container when it reaches the bottom
-- [ ] Make the ball change direction when it hits the bottom
-- [ ] Get this working for all balls added
+- [x] Make the ball change direction when it hits the bottom
+- [x] create a gravitational effect so ball speeds up when going down and slows down when moving up
+- [ ] get gravity to reduce the velocity with time, so the ball eventually sits on the bottom
+- [ ] remove the ball once its on the bottom and its velocity is 0;
+- [ ] start the ball off on a random velocity when it mounts
+- [ ] set an angle and change the horizontal position as the ball drops
 
 ### Components and hooks
 
