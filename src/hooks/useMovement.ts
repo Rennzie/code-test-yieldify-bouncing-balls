@@ -11,7 +11,7 @@ export type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
  *  - this create multiple intervals which all change the ball position
  *  - can we use a useCallback?
  */
-export default function useMovement(ballSetup: BallSetup) {
+export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id: string) => void) {
   const { startCoords, containerBottom, containerTop, radius } = ballSetup;
 
   const intervalRef = useRef<any>(null);
@@ -21,6 +21,7 @@ export default function useMovement(ballSetup: BallSetup) {
   const [y, setY] = useState<number>(startCoords.y - radius);
 
   const velocity = useRef<number>(1);
+  const energy = useRef<number>(1);
 
   const increaseVelocity = () => {
     if (velocity.current >= 10) return;
@@ -50,7 +51,7 @@ export default function useMovement(ballSetup: BallSetup) {
       case 'DOWN':
         return setY(oldY => oldY + velocity.current);
       case 'UP':
-        return setY(oldY => oldY - velocity.current);
+        return setY(oldY => oldY - velocity.current * energy.current);
       default:
         throw new Error('Incorrect direction given');
     }
@@ -79,9 +80,17 @@ export default function useMovement(ballSetup: BallSetup) {
   }, []);
 
   // change the direction when the ball hits the bottom, top or has a 0 velocity
+  // NOTE: all very imperative
   useEffect(() => {
     if (y + radius * 2 >= containerBottom) {
       direction.current = 'UP';
+      energy.current -= 0.2;
+      if (energy.current <= 0.000000001) {
+        setTimeout(() => {
+          handleRemoveBall(ballSetup.id);
+          endMovement();
+        }, 500);
+      }
     }
     if (y <= containerTop || velocity.current < 0) {
       direction.current = 'DOWN';

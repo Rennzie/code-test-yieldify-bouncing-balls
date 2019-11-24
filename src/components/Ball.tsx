@@ -22,8 +22,8 @@ type Props = {
   handleRemoveBall: (id: string) => void;
 };
 
-export default function Ball({ idx, ballSetup }: Props) {
-  const { position } = useMovement(ballSetup);
+export default function Ball({ idx, ballSetup, handleRemoveBall }: Props) {
+  const { position } = useMovement(ballSetup, handleRemoveBall);
 
   // if (position.y >= containerBottom) {
   //   endMovement();
