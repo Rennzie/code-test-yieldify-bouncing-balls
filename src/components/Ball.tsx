@@ -23,12 +23,7 @@ type Props = {
 };
 
 export default function Ball({ idx, ballSetup, handleRemoveBall }: Props) {
-  const { position } = useMovement(ballSetup, handleRemoveBall);
-
-  // if (position.y >= containerBottom) {
-  //   endMovement();
-  //   handleRemoveBall(ballSetup.id);
-  // }
+  const position = useMovement(ballSetup, handleRemoveBall);
 
   return (
     <div

@@ -5,6 +5,11 @@ import { BallSetup } from '../components/Ball';
 
 export type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
 
+function randomVelocity() {
+  const velocity = Math.floor(Math.random() * 10);
+  return velocity;
+}
+
 /**
  * Problem:
  *  - react updates everytime we set state which starts a new interval
@@ -15,16 +20,16 @@ export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id:
   const { startCoords, containerBottom, containerTop, radius } = ballSetup;
 
   const intervalRef = useRef<any>(null);
-  const direction = useRef<Direction>('DOWN');
+  const direction = useRef<Direction>('UP');
 
   const [x] = useState<number>(startCoords.x - radius);
   const [y, setY] = useState<number>(startCoords.y - radius);
 
-  const velocity = useRef<number>(1);
+  const velocity = useRef<number>(randomVelocity());
   const energy = useRef<number>(1);
 
   const increaseVelocity = () => {
-    if (velocity.current >= 10) return;
+    if (velocity.current >= 20) return;
 
     velocity.current += 0.1;
   };
@@ -86,9 +91,9 @@ export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id:
       direction.current = 'UP';
       energy.current -= 0.2;
       if (energy.current <= 0.000000001) {
+        endMovement();
         setTimeout(() => {
           handleRemoveBall(ballSetup.id);
-          endMovement();
         }, 500);
       }
     }
@@ -97,5 +102,5 @@ export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id:
     }
   });
 
-  return { position: { x, y }, endMovement };
+  return { x, y };
 }
