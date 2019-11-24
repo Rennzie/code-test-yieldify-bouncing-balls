@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "format": "yarn prettier --write",
+    "format": "npm run prettier --write",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css||ts|tsx|md|graphql|mdx)\"",
     "validate": "yarn lint && yarn prettier --list-different"
   },

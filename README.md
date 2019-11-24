@@ -32,16 +32,19 @@ Link to instructions found [here](https://docs.google.com/document/d/1b21q6uYsMD
 
 This section is a rough outline of the thought process I followed to acomplish the task.
 
-1.  Set-up project with tooling which helps minimise small bugs. Eslint etc
-2.  Build a contained which adds a ball on click
-3.  Make sure multiple balls can be added
-4.  Set the start position of the ball based on click
-5.  Get the balls to drop after they appear in the container
-    - Create a gravity function?
-6.  Remove the ball from the container when it reaches the bottom
-7.  Get this working for all balls added
+- [x] Set-up project with tooling which helps minimise small bugs. Eslint etc
+- [x] Build a contained which adds a ball on click
+- [x] Make sure multiple balls can be added
+- [x] Set the start position of the ball based on click
+- [x] Get the balls to drop after they appear in the container
+      (Create a gravity function?)
+- [x] Remove the ball from the container when it reaches the bottom
+- [ ] Make the ball change direction when it hits the bottom
+- [ ] Get this working for all balls added
 
 ### Components and hooks
+
+ß
 
 1. `Container`
    - Parent which holds number of balls
