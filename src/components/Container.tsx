@@ -5,20 +5,28 @@ import './Container.css';
 
 import Ball, { BallSetup } from './Ball';
 
+export type ContainerRect = {
+  bottom: number;
+  top: number;
+  left: number;
+  right: number;
+};
+
 export default function Container() {
-  const [balls, setBalls] = useState<BallSetup[]>([]);
-  const [bottom, setBottom] = useState(0);
-  const [top, setTop] = useState(0);
   const containerRef = useRef(null);
+  const [balls, setBalls] = useState<BallSetup[]>([]);
+  const [containerRect, setContainerRect] = useState<ContainerRect>({
+    bottom: 0,
+    top: 0,
+    left: 0,
+    right: 0
+  });
 
   useEffect(() => {
     if (containerRef.current) {
       //@ts-ignore
-      const newBottom = containerRef.current.getBoundingClientRect().bottom;
-      //@ts-ignore
-      const newTop = containerRef.current.getBoundingClientRect().top;
-      setBottom(newBottom);
-      setTop(newTop);
+      const { bottom, top, left, right } = containerRef.current.getBoundingClientRect();
+      setContainerRect({ bottom, top, left, right });
     }
   }, []);
 
@@ -31,8 +39,7 @@ export default function Container() {
       {
         id: `ball-${id}`,
         startCoords: { x, y },
-        containerBottom: bottom,
-        containerTop: top,
+        containerRect,
         radius: 15
       }
     ]);

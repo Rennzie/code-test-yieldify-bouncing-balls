@@ -2,6 +2,7 @@ import React from 'react';
 import './Ball.css';
 
 import { useMovement } from '../hooks';
+import { ContainerRect } from './Container';
 
 export type Position = {
   x: number;
@@ -10,8 +11,7 @@ export type Position = {
 
 export type BallSetup = {
   id: string;
-  containerBottom: number;
-  containerTop: number;
+  containerRect: ContainerRect;
   startCoords: Position;
   radius: number;
 };

@@ -43,8 +43,9 @@ This section is a rough outline of the thought process I followed to acomplish t
 - [x] create a gravitational effect so ball speeds up when going down and slows down when moving up
 - [x] get gravity to reduce the velocity with time, so the ball eventually sits on the bottom
 - [x] remove the ball once its on the bottom and its velocity is 0;
-- [ ] start the ball off on a random velocity when it mounts
-- [ ] set an angle and change the horizontal position as the ball drops
+- [x] start the ball off on a random velocity when it mounts
+- [x] set an angle and change the horizontal position as the ball drops
+- [x] randomise all the start inputs
 
 ### Components and hooks
 
