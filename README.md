@@ -46,6 +46,14 @@ This section is a rough outline of the thought process I followed to acomplish t
 - [x] start the ball off on a random velocity when it mounts
 - [x] set an angle and change the horizontal position as the ball drops
 - [x] randomise all the start inputs
+- [x] change horizontal direction on vertical wall collision
+- primary task complete. Now for some additions and imporovements
+- [ ] improve the energy disipation, it should fade itself over time. look at actuall gravity
+- [ ] improve perfomance by only having on renderer: try a timer display, not sure react will like this?
+- [ ] refactor the useMovement, add coments and test critical components
+- [ ] make the display a bit more fun and add some instructions
+- [ ] allow the user to power up the ball on a long click hold
+- [ ] publish to github pages
 
 ### Components and hooks
 
@@ -56,7 +64,7 @@ This section is a rough outline of the thought process I followed to acomplish t
 2. `Ball`
    - Rendered on click. Position changes relative to the parent as a function of movement control
 3. `useMovment`
-   - handles the chaning movement of the ball based on its initial start position
+   - handles the changing movement of the ball based on its initial start position
 
 ### Folder Structure
 

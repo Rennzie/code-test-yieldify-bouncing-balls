@@ -73,7 +73,7 @@ export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id:
   const velocity = useRef<number>(randomVelocity());
   const angle = useRef<number>(randomAngle());
   const horizVelocity = useRef<number>(xComponent(angle.current, velocity.current));
-  const energy = useRef<number>(1);
+  const energy = useRef<number>(100);
 
   const [x, setX] = useState<number>(startCoords.x - radius);
   const [y, setY] = useState<number>(startCoords.y - radius);
@@ -106,7 +106,9 @@ export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id:
       case 'DOWN':
         return setY(oldY => oldY + yComponent(angle.current, velocity.current));
       case 'UP':
-        return setY(oldY => oldY - yComponent(angle.current, velocity.current) * energy.current);
+        return setY(
+          oldY => oldY - (yComponent(angle.current, velocity.current) * energy.current) / 100
+        );
       default:
         throw new Error('Incorrect vertDirection given');
     }
@@ -151,7 +153,7 @@ export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id:
   useEffect(() => {
     if (y + radius * 2 >= bottom) {
       vertDirection.current = 'UP';
-      energy.current -= 0.2;
+      energy.current -= 25;
       if (energy.current <= 0.000000001) {
         endMovement();
         setTimeout(() => {
