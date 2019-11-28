@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/code-test-yieldify-bouncing-balls/static/css/main.96dce5da.chunk.css",
+    "main.js": "/code-test-yieldify-bouncing-balls/static/js/main.cad5b1db.chunk.js",
+    "main.js.map": "/code-test-yieldify-bouncing-balls/static/js/main.cad5b1db.chunk.js.map",
+    "runtime-main.js": "/code-test-yieldify-bouncing-balls/static/js/runtime-main.1ab44336.js",
+    "runtime-main.js.map": "/code-test-yieldify-bouncing-balls/static/js/runtime-main.1ab44336.js.map",
+    "static/js/2.90e59565.chunk.js": "/code-test-yieldify-bouncing-balls/static/js/2.90e59565.chunk.js",
+    "static/js/2.90e59565.chunk.js.map": "/code-test-yieldify-bouncing-balls/static/js/2.90e59565.chunk.js.map",
+    "index.html": "/code-test-yieldify-bouncing-balls/index.html",
+    "precache-manifest.6bd30c3ffc4bfc94ccc90936dc89dc84.js": "/code-test-yieldify-bouncing-balls/precache-manifest.6bd30c3ffc4bfc94ccc90936dc89dc84.js",
+    "service-worker.js": "/code-test-yieldify-bouncing-balls/service-worker.js",
+    "static/css/main.96dce5da.chunk.css.map": "/code-test-yieldify-bouncing-balls/static/css/main.96dce5da.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1ab44336.js",
+    "static/js/2.90e59565.chunk.js",
+    "static/css/main.96dce5da.chunk.css",
+    "static/js/main.cad5b1db.chunk.js"
+  ]
+}
