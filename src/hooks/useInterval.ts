@@ -1,5 +1,5 @@
 /**
- * DISCLAIMER: I borrow this hook from Dan Abramov.
+ * DISCLAIMER: I borrowed this hook from Dan Abramov.
  * The origional post describing it can be found [here](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
  */
 

@@ -50,9 +50,10 @@ This section is a rough outline of the thought process I followed to acomplish t
 - primary task complete. Now for some additions and imporovements
 - [x] improve the energy decay, it should fade itself over time. look at actuall gravity
 - [ ] ~~improve perfomance by only having one renderer: try a timer display, not sure react will like this?~~
-- [ ] refactor the useMovement, add comments and test critical components
-- [ ] make the display a bit more fun and add some instructions
-- [ ] allow the user to power up the ball on a long click hold
+- [x] refactor the useMovement, add comments and test critical components
+- [x] make the display a bit more fun and add some instructions
+- [ ] ~~allow the user to power up the ball on a long click hold~~
+- [x] add Yieldify faviconÌ
 - [ ] publish to github pages
 
 ### Components and hooks

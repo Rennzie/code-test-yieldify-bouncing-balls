@@ -6,8 +6,10 @@ import Container from './Container';
 
 function App() {
   return (
-    <main className="App">
+    <main style={{ display: 'flex', flexDirection: 'column' }} className="App">
+      <h1>Yieldify Bouncey</h1>
       <Container />
+      <p>Click the rectangle to see your balls bounce</p>
     </main>
   );
 }
