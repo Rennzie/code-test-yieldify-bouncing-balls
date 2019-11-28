@@ -1,4 +1,6 @@
-## Code test for Yieldify Frontend Engineer 22-11-2019
+## Code test for Yieldify Frontend Engineer 28-11-2019
+
+---
 
 ## Getting Started
 
@@ -18,7 +20,7 @@ To start the project locally first:
 
 _**Note**: Node.js is required to run the project_
 
-Alternatively visit the working project [here]()
+Alternatively visit the working [project](https://rennzie.github.io/code-test-yieldify-bouncing-balls/)
 
 ---
 
@@ -37,7 +39,7 @@ This section is a rough outline of the thought process I followed to acomplish t
 - [x] Make sure multiple balls can be added
 - [x] Set the start position of the ball based on click
 - [x] Get the balls to drop after they appear in the container
-      (Create a gravity function?)
+- [x]~~Create a gravity function?~~
 - [x] Remove the ball from the container when it reaches the bottom
 - [x] Make the ball change direction when it hits the bottom
 - [x] create a gravitational effect so ball speeds up when going down and slows down when moving up
@@ -54,11 +56,9 @@ This section is a rough outline of the thought process I followed to acomplish t
 - [x] make the display a bit more fun and add some instructions
 - [ ] ~~allow the user to power up the ball on a long click hold~~
 - [x] add Yieldify faviconÌ
-- [ ] publish to github pages
+- [x] publish to github pages
 
 ### Components and hooks
-
-ß
 
 1. `Container`
    - Parent which holds number of balls
@@ -66,12 +66,18 @@ This section is a rough outline of the thought process I followed to acomplish t
    - Rendered on click. Position changes relative to the parent as a function of movement control
 3. `useMovment`
    - handles the changing movement of the ball based on its initial start position
+4. `useDirection`
+   - handles the balls direction and changing it when needed
+5. `useVelocity`
+   - handles the balls velocity. Calculates its x and y component velocity depending on a given angle
 
 ### Folder Structure
 
 ```
 -- src
 |  --- __tests__
+|    |   --- App.test.tsx
+|    |   --- Container.test.tsx
 |
 |  --- components
 |    |   --- App.tsx
@@ -80,11 +86,18 @@ This section is a rough outline of the thought process I followed to acomplish t
 |
 |  --- hooks
 |    |   --- useMovement.ts
+|    |   --- useDirection.ts
+|    |   --- useVelocity.ts
+|    |   --- useInterval.ts
 |  --- index.tsx
 ```
+
+---
 
 ## Third party attribution
 
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [typescript].
-- Dev tooling includes [eslint](), [prettier](), [husky]() & [lint-staged]()
-- Hosting simplified with [gh-pages]()
+- Dev tooling includes [eslint](https://eslint.org/), [prettier](https://prettier.io/), [husky](https://github.com/typicode/husky) & [lint-staged](https://github.com/okonet/lint-staged)
+- Hosting simplified with [gh-pages](https://github.com/tschaub/gh-pages)
+- useInterval logic borrowed from Dan Abramov. See origional [post](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
+- @testing-library/react for better testing tooling
