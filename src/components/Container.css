@@ -5,3 +5,8 @@
   border: 2px solid black;
   cursor: pointer;
 }
+.container-wrapper-canvas {
+  overflow: hidden;
+  border: 2px solid black;
+  cursor: pointer;
+}

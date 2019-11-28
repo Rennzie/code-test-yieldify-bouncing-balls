@@ -48,9 +48,9 @@ This section is a rough outline of the thought process I followed to acomplish t
 - [x] randomise all the start inputs
 - [x] change horizontal direction on vertical wall collision
 - primary task complete. Now for some additions and imporovements
-- [ ] improve the energy disipation, it should fade itself over time. look at actuall gravity
-- [ ] improve perfomance by only having on renderer: try a timer display, not sure react will like this?
-- [ ] refactor the useMovement, add coments and test critical components
+- [x] improve the energy decay, it should fade itself over time. look at actuall gravity
+- [ ] ~~improve perfomance by only having one renderer: try a timer display, not sure react will like this?~~
+- [ ] refactor the useMovement, add comments and test critical components
 - [ ] make the display a bit more fun and add some instructions
 - [ ] allow the user to power up the ball on a long click hold
 - [ ] publish to github pages

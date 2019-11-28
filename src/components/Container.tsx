@@ -52,10 +52,6 @@ export default function Container() {
     });
   };
 
-  // if (containerRef.current) {
-  //   console.log(containerRef.current.getBoundingClientRect());
-  // }
-
   return (
     <main
       ref={containerRef}

@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Direction } from './useMovement';
+import { Direction } from './useDirection';
 
 export default function useVelocity(direction: Direction) {
   const velocity = useRef<number>(1);
