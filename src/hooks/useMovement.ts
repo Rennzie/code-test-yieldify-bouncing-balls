@@ -2,17 +2,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { BallSetup } from '../components/Ball';
 import { useInterval } from './useInterval';
-// import useVelocity from './useVelocity';
+import useVelocity from './useVelocity';
 
 import useDirection from './useDirection';
-
-/**
- * Creates a random start velocity between 0 and 10px
- */
-function randomVelocity() {
-  const velocity = Math.floor(Math.random() * 10) + 5;
-  return velocity;
-}
 
 /**
  * Creates a random start angle between 0 and 45degrees
@@ -20,38 +12,6 @@ function randomVelocity() {
 function randomAngle() {
   const angle = Math.floor(Math.random() * 45);
   return angle;
-}
-
-// function randomDirection() {
-//   const randomNumber = Math.floor(Math.random() * 1000);
-//   if (randomNumber > 500) return 'LEFT';
-
-//   return 'RIGHT';
-// }
-
-function toRadians(angle: number) {
-  const radians = angle * (Math.PI / 180);
-  return radians;
-}
-
-/**
- * Calculate x component velocity as a function of the velocity
- * @return number
- */
-function xComponent(angle: number, velocity: number) {
-  const componentVelocity = velocity * Math.sin(toRadians(angle));
-
-  return componentVelocity;
-}
-
-/**
- * Calculate y component velocity as a function of the velocity
- * @return number
- */
-function yComponent(angle: number, velocity: number) {
-  const componentVelocity = velocity * Math.cos(toRadians(angle));
-
-  return componentVelocity;
 }
 
 /**
@@ -64,7 +24,8 @@ export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id:
     containerRect: { top, bottom, left, right },
     radius
   } = ballSetup;
-  const intervalRef = useRef<any>(null);
+
+  const angle = useRef<number>(randomAngle());
 
   const {
     horizDirection,
@@ -72,83 +33,41 @@ export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id:
     changeHorizDirection,
     changeVertDirection
   } = useDirection();
-  console.log('the vert direction is', vertDirection);
 
-  // const vertDirection = useRef<Direction>('UP');
-  // const horizDirection = useRef<Direction>(randomDirection());
-  const angle = useRef<number>(randomAngle());
+  const { horizVelocity, vertVelocity, changeVelocity } = useVelocity(angle.current);
 
-  const velocity = useRef<number>(randomVelocity());
-  const horizVelocity = useRef<number>(xComponent(angle.current, velocity.current));
   const energy = useRef<number>(100);
 
   const [x, setX] = useState<number>(startCoords.x - radius);
   const [y, setY] = useState<number>(startCoords.y - radius);
 
-  const increaseVelocity = () => {
-    if (velocity.current >= 20) return;
-
-    velocity.current += 0.1;
-  };
-
-  const decreaseVelocity = () => {
-    if (velocity.current < 0) return;
-
-    velocity.current -= 0.1;
-  };
-
-  const changeVelocity = useCallback(() => {
-    switch (vertDirection) {
-      case 'UP':
-        return decreaseVelocity();
-      case 'DOWN':
-        return increaseVelocity();
-      default:
-        throw new Error('Incorrect vertDirection given');
-    }
-  }, [vertDirection]);
-
   const moveVertical = useCallback(() => {
     switch (vertDirection) {
       case 'DOWN':
-        return setY(oldY => oldY + yComponent(angle.current, velocity.current));
+        return setY(oldY => oldY + vertVelocity);
       case 'UP':
-        return setY(
-          oldY => oldY - (yComponent(angle.current, velocity.current) * energy.current) / 100
-        );
+        return setY(oldY => oldY - (vertVelocity * energy.current) / 100);
       default:
         throw new Error('Incorrect vertDirection given');
     }
-  }, [vertDirection]);
+  }, [vertDirection, vertVelocity]);
 
   const moveHorizontal = useCallback(() => {
     switch (horizDirection) {
       case 'LEFT':
-        return setX(oldX => oldX - (horizVelocity.current * energy.current) / 100);
+        return setX(oldX => oldX - (horizVelocity * energy.current) / 100);
       case 'RIGHT':
-        return setX(oldX => oldX + (horizVelocity.current * energy.current) / 100);
+        return setX(oldX => oldX + (horizVelocity * energy.current) / 100);
       default:
         throw new Error('Incorrect vertDirection given');
     }
-  }, [horizDirection]);
+  }, [horizDirection, horizVelocity]);
 
   useInterval(() => {
     moveVertical();
     moveHorizontal();
-    changeVelocity();
+    changeVelocity(vertDirection);
   }, 16);
-
-  // this call setState every 16ms!! for every ball
-  // const startMovement = useCallback(() => {
-  //   intervalRef.current = setInterval(() => {}, 16);
-  // }, [moveVertical, moveHorizontal, changeVelocity]);
-
-  // clean up the interval when ball unmounts
-  const endMovement = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-  };
 
   // change the vertDirection when the ball hits the bottom, top or has a 0 velocity
   // NOTE: all very imperative
@@ -160,13 +79,12 @@ export default function useMovement(ballSetup: BallSetup, handleRemoveBall: (id:
       }, 100);
 
       if (energy.current <= 0.000000001) {
-        endMovement();
         setTimeout(() => {
           handleRemoveBall(ballSetup.id);
         }, 500);
       }
     }
-    if (y <= top || velocity.current < 0) {
+    if (y <= top || vertVelocity < 0) {
       changeVertDirection('DOWN');
     }
 

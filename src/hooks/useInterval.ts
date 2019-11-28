@@ -3,8 +3,12 @@
  * The origional post describing it can be found [here](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
  */
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
+/**
+ * Creates a new interval with fresh arguments based on the delay.
+ * - This gets around the interval closing over its values
+ */
 export function useInterval(callback: any, delay: number) {
   const savedCallback = useRef();
 
