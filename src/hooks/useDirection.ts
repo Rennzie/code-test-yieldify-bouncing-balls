@@ -14,11 +14,9 @@ export default function useDirection() {
   const horizDirection = useRef<Direction>(randomDirection());
 
   const changeVertDirection = (direction: Direction) => {
-    // console.log('CHANGE VERT DIRECTION', direction);
     vertDirection.current = direction;
   };
   const changeHorizDirection = (direction: Direction) => {
-    // console.log('CHANGE HORIZ DIRECTION', direction);
     horizDirection.current = direction;
   };
 
