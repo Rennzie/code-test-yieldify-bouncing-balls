@@ -39,7 +39,7 @@ This section is a rough outline of the thought process I followed to acomplish t
 - [x] Make sure multiple balls can be added
 - [x] Set the start position of the ball based on click
 - [x] Get the balls to drop after they appear in the container
-- [x]~~Create a gravity function?~~
+- [x] ~~Create a gravity function?~~
 - [x] Remove the ball from the container when it reaches the bottom
 - [x] Make the ball change direction when it hits the bottom
 - [x] create a gravitational effect so ball speeds up when going down and slows down when moving up
@@ -96,8 +96,8 @@ This section is a rough outline of the thought process I followed to acomplish t
 
 ## Third party attribution
 
-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [typescript].
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [typescript](https://www.typescriptlang.org/).
 - Dev tooling includes [eslint](https://eslint.org/), [prettier](https://prettier.io/), [husky](https://github.com/typicode/husky) & [lint-staged](https://github.com/okonet/lint-staged)
 - Hosting simplified with [gh-pages](https://github.com/tschaub/gh-pages)
 - useInterval logic borrowed from Dan Abramov. See origional [post](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
-- @testing-library/react for better testing tooling
+- [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro) for better testing tooling
